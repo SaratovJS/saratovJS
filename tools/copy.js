@@ -21,7 +21,7 @@ async function copy({ watch } = {}) {
 
   await Promise.all([
     ncp('src/public', 'build/public'),
-    ncp('src/content', 'build/content')
+    ncp('src/content', 'build/content'),
   ]);
 
   await fs.writeFile('./build/package.json', JSON.stringify({
@@ -29,8 +29,8 @@ async function copy({ watch } = {}) {
     engines: pkg.engines,
     dependencies: pkg.dependencies,
     scripts: {
-      start: 'node server.js'
-    }
+      start: 'node server.js',
+    },
   }, null, 2));
 
   if (watch) {
