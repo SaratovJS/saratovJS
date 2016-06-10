@@ -42,11 +42,12 @@ function runServer(cb) {
 
   server = cp.spawn('node', [serverPath], {
     env: Object.assign({ NODE_ENV: 'development' }, process.env),
-    silent: false,
+    silent: false
   });
 
   server.stdout.on('data', onStdOut);
   server.stderr.on('data', x => process.stderr.write(x));
+  return server;
 }
 
 process.on('exit', () => {
